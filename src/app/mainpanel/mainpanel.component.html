@@ -1,0 +1,69 @@
+<div class="mainPanelStyle">
+    <div style="background-color: blue;"> <h1>Tourism Package Store</h1> </div> 
+    <div class="mainSubPanel">
+        Search  <input type="text" [disabled]="status"/>
+    </div>
+    <hr/>
+    <table class="table table-hover">
+        <tr>
+            <th > Selection</th>
+            <th>Images</th>
+            <th></th>
+            <th> Package Name</th>
+            <th></th>
+            <th (click) = "sortDays()"> No of Days &nbsp;<i class="fa fa-sort"></i></th>
+            <th (click) = "sort()"> Cost &nbsp;<i class="fa fa-sort"></i></th>
+            <th (click) = "sortDiscount()"> Discount &nbsp;<i class="fa fa-sort"></i></th>
+            
+        </tr>
+        <tr *ngFor="let package of packageArr" >
+            <td> <input type="checkbox" name="{{packageArr.packageName}" (change)="getPackage($event,package.id)" id = "savePackageName"/> </td> 
+            <td><img src = {{package.Image}} width="200px" height="100px"></td> 
+            <td> {{package.packageName}} </td>
+            <td> {{package.noOfDays}} </td>
+            <td> {{package.cost}} </td>
+            <td> {{package.discount}} </td>
+            <!-- <td> <input #unitsToBuy  type="text" name="stockunits" id="units101" size="8" style="background-color: white;"/> </td> -->
+        </tr>
+    </table>
+    <input type="button" (click)="printPackage()" value="Compare"/>
+
+    <hr/>
+    <h2>Details</h2>
+    <table>
+        <tr>
+            <b>Desitination View</b>
+            <td *ngFor ="let p of printingPackage">
+                <img src = {{p.image}} width="200px" height="100px"></td>
+        </tr>
+
+        <tr>
+            <b>Package Name</b>
+            <td *ngFor ="let p of printingPackage">
+                {{p.packageName}}
+            </td>
+        </tr>
+
+        <tr>
+            <b>Package Cost</b>
+            <td *ngFor ="let p of printingPackage">
+                {{p.cost}}
+            </td>
+        </tr>
+
+        <tr>
+            <b>No of Days</b>
+            <td *ngFor ="let p of printingPackage">
+                {{p.noOfDays}}
+            </td>
+        </tr>
+
+        <tr>
+            <b>Discount</b>
+            <td *ngFor ="let p of printingPackage">
+                {{p.discount}}
+            </td>
+        </tr>
+
+    </table>
+</div>
